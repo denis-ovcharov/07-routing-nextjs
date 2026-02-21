@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { fetchNoteById } from "@/lib/api";
 import css from "./NotePreview.module.css";
 import Modal from "@/components/Modal/Modal";
+import { Note } from "@/types/note";
 
 const NotePreviewClient = () => {
   const router = useRouter();
@@ -15,7 +16,7 @@ const NotePreviewClient = () => {
     data: note,
     isLoading,
     error,
-  } = useQuery({
+  } = useQuery<Note>({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
