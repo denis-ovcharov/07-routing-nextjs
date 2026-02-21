@@ -1,7 +1,3 @@
-.main {
-  flex: 1;
-}
-
 .container {
   max-width: 800px;
   margin: 32px auto;
@@ -58,6 +54,20 @@
   text-overflow: ellipsis;
 }
 
+.backBtn {
+  padding: 8px 16px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #afb5bd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.backBtn:hover {
+  background-color: #e2e6ea;
+}
 .text {
   font-weight: 600;
 }
