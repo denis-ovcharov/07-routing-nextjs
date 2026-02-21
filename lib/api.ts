@@ -13,15 +13,27 @@ export async function fetchNotes(
   query: string,
   page: number = 1,
   perPage: number = 9,
+  tag?: NoteTag,
 ) {
+  const params: Record<string, string | number> = {
+    search: query,
+    page,
+    perPage,
+  };
+
+  if (tag && tag !== "all") {
+    params.tag = tag;
+  }
+
   const options = {
     method: "GET",
     url: `${URL}`,
-    params: { search: query, page: page, perPage: perPage },
+    params,
     headers: {
       Authorization: `Bearer ${NOTEHUB_TOKEN}`,
     },
   };
+
   const { data } = await axios.request<FetchNotesResponse>(options);
 
   if (data.notes.length === 0) {

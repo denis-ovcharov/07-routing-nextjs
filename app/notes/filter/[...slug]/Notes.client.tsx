@@ -1,24 +1,28 @@
 "use client";
-import NoteList from "../../components/NoteList/NoteList";
-import Pagination from "../../components/Pagination/Pagination";
+import NoteList from "../../../../components/NoteList/NoteList";
+import Pagination from "../../../../components/Pagination/Pagination";
 import css from "./page.module.css";
 import { useState } from "react";
-import Modal from "../../components/Modal/Modal";
-import NoteForm from "../../components/NoteForm/NoteForm";
+import Modal from "../../../../components/Modal/Modal";
+import NoteForm from "../../../../components/NoteForm/NoteForm";
 import { Toaster } from "react-hot-toast";
 import { useDebouncedCallback } from "use-debounce";
-import SearchBox from "../../components/SearchBox/SearchBox";
+import SearchBox from "../../../../components/SearchBox/SearchBox";
 import { useNotes } from "@/hooks/useNotes";
 import EditNoteForm from "@/components/EditNoteForm/EditNoteFormForm";
-import { Note } from "@/types/note";
+import { Note, NoteTag } from "@/types/note";
 
-function NotesClient() {
+type Props = {
+  tag: NoteTag;
+};
+
+function NotesClient({ tag }: Props) {
   const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   type ModalType = "create" | "edit" | null;
   const [isModalOpen, setIsModalOpen] = useState<ModalType>(null);
   const [selectedNote, setSelectedNote] = useState<Note | null>(null);
-  const { data, isSuccess } = useNotes(query, page);
+  const { data, isSuccess } = useNotes(query, page, 9, tag);
 
   const updateQuery = useDebouncedCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {

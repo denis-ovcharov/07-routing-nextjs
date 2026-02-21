@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { NoteTag } from "../../types/note";
 import css from "./NoteForm.module.css";
-
+import { tags } from "../../types/note";
 import { ErrorMessage, Field, Form, Formik, type FormikHelpers } from "formik";
 import { createNote } from "../../lib/api";
 import toast from "react-hot-toast";
@@ -48,8 +48,6 @@ export default function NoteForm({ onClose }: NoteFormProps) {
       },
     });
   };
-
-  const tags: NoteTag[] = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
