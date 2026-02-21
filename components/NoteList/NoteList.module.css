@@ -39,8 +39,6 @@
 }
 
 .button {
-  align-self: flex-end;
-  padding: 6px 12px;
   font-size: 14px;
   color: #fff;
   background-color: #dc3545;
@@ -73,11 +71,10 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 12px;
 }
 
 .link {
-  align-self: flex-end;
-  padding: 6px 12px;
   font-size: 14px;
   color: #fff;
   background-color: #0d6efd; /* синій колір */
@@ -85,16 +82,15 @@
   border-radius: 4px;
   cursor: pointer;
   text-decoration: none;
-  display: inline-block;
+
   transition: background-color 0.2s ease;
+  white-space: nowrap;
 }
 
 .link:hover {
   background-color: #0b5ed7;
 }
 .edit {
-  align-self: flex-end;
-  padding: 6px 12px;
   font-size: 14px;
   color: #fff;
   background-color: #358649;
@@ -106,4 +102,21 @@
 
 .edit:hover {
   background-color: #2d6a4f;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.link,
+.edit,
+.button {
+  height: 32px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
 }
